@@ -2,31 +2,40 @@
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
-wallet = "~/.config/solana/id.json"
+cluster = "devnet"
+wallet = "~/.config/solana/devnet.json"
 
 [programs.localnet]
 mpl_auction_house="hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk"
 
+[programs.devnet]
+mpl_auction="6Z6TYHgKq9jW8ZMCgnU8yymzm6aQaXvv1aEzMMZoNWks"
+mpl_metaplex="GKgWgEvYV43UuDTJQ71QxUZK3kKqMHbG5PNaPRx1deBe"
+mpl_token_metadata="12qTEpUSy7utaVFRTjEEZYzHgCkThgVgH4xhunJCtuE1"
+mpl_token_vault="HhKCYuYr4zMuGbdvscZeEEM4X6oF8dzQgtrm1N6hmsUb"
+mpl_nft_packs="6jgXfPmxLBGSKHnkfVfEwC2t9mYr95dLXHBHLUmNdhy5"
+
 [[test.genesis]]
-address = "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+address = "6Z6TYHgKq9jW8ZMCgnU8yymzm6aQaXvv1aEzMMZoNWks"
+program = "target/deploy/mpl_auction.so"
+
+[[test.genesis]]
+address = "GKgWgEvYV43UuDTJQ71QxUZK3kKqMHbG5PNaPRx1deBe"
+program = "target/deploy/mpl_metaplex.so"
+
+[[test.genesis]]
+address = "12qTEpUSy7utaVFRTjEEZYzHgCkThgVgH4xhunJCtuE1"
 program = "target/deploy/mpl_token_metadata.so"
 
 [[test.genesis]]
-address = "hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk"
-program = "target/deploy/mpl_auction_house.so"
-
-[[test.genesis]]
-address = "qntmGodpGkrM42mN68VCZHXnKqDCT8rdY23wFcXCLPd"
-program = "target/deploy/mpl_token_entangler.so"
-
-[[test.genesis]]
-address = "gdrpGjVffourzkdDRrQmySw4aTHr8a3xmQzzxSwFD1a"
-program = "target/deploy/mpl_gumdrop.so"
+address = "HhKCYuYr4zMuGbdvscZeEEM4X6oF8dzQgtrm1N6hmsUb"
+program = "target/deploy/mpl_token_vault.so"
 
 [workspace]
 members = [
-  "token-entangler/program",
+  "auction/program",
+  "metaplex/program",
+  "nft-packs/program",
   "token-metadata/program",
-  "auction-house/program"
+  "token-vault/program"
 ] 
